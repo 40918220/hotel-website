@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正修飯店hotel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        header {
+            text-align: center;
+            padding: 10px;
+            background-color: #f2f2f2;
+        }
+        main {
+            margin-top: 20px;
+        }
+        .hotel-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .hotel-card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 10px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>正修飯店hotel</h1>
+    </header>
+
+    <main>
+        <div class="hotel-list" id="hotelList">
+            <!-- Hotel cards will be dynamically added here -->
+        </div>
+    </main>
+
+    <script>
+        // 模擬數據以進行演示
+        const hotels = [
+            { name: "Hotel A", price: 1000, rating: 4, image: "images/hotel_a.jpg" },
+            { name: "Hotel B", price: 1500, rating: 5, image: "images/hotel_b.jpg" },
+            { name: "Hotel C", price: 1000, rating: 3, image: "images/hotel_c.jpg" },
+        ];
+
+        // 生成每個酒店卡片的HTML的功能
+        function generateHotelCard(hotel) {
+            return `
+                <div class="hotel-card">
+                    <h2>${hotel.name}</h2>
+                    <img src="${hotel.image}" alt="${hotel.name}" style="width: 100%;">
+                    <p>價格：$${hotel.price}/晚</p>
+                    <p>評分：${hotel.rating}/5</p>
+                    <button onclick="bookHotel('${hotel.name}')">現在預訂</button>
+                </div>
+            `;
+        }
+
+        // 將酒店呈現在頁面上的功能
+        function renderHotels() {
+            const hotelListElement = document.getElementById('hotelList');
+            hotelListElement.innerHTML = hotels.map(generateHotelCard).join('');
+        }
+
+        // 模擬預訂的功能（您可以用實際的預訂邏輯替換它）
+        function bookHotel(hotelName) {
+            alert(`已確認預訂 ${hotelName}！`);
+        }
+
+        // 初始呈現
+        renderHotels();
+    </script>
+
+</body>
+</html> 
